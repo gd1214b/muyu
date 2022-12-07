@@ -8,7 +8,7 @@ $(".list").click(function (e) {
         Merit = 0;
         $(".text .text_1").text("当前功德：" + Merit);
     } else if (data == "about") {
-        alert("作者：xe")
+        alert("敲电子木鱼，积虚拟功德，见赛博佛祖")
     } else if (data == "hide") {
         
     }
