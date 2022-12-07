@@ -14,23 +14,21 @@ $(".list").click(function (e) {
     }
 });
 
+//主函数
 function run() {
-    audio_play($(".woodfish").attr("data"))
-    Data_control("click")
-    animation()
-    animation_text()
+    audio_play()            //播放木鱼敲击声
+    Data_control("click")   //加功德
+    animation()             //显示木鱼动画
+    animation_text()        //显示“功德+1”
 }
 
-function audio_play(i) {
-    if(i == "default") {
-        var audio = new Audio("audio/default/muyu.mp3.mp3");
-        audio.play();
-    } else {
-        var audio = new Audio("audio/" + i);
-        audio.play();
-    }
+//从11种木鱼声音中随机选择一种播放
+function audio_play() {
+    var audio = new Audio("audio/" + randomNum(1,11) + ".mp3");
+    audio.play();
 }
 
+//木鱼动画
 function animation() {
     $(".woodfish .click img").css("width", "150px");
     setTimeout(() => {
@@ -38,6 +36,7 @@ function animation() {
     }, 100);
 }
 
+//显示“功德+1”
 function animation_text() {
     var randomNum_1 = randomNum(0,100000)
     $(".woodfish").append("<div id=\"text_tips_" +randomNum_1+ "\" class=\"text_tips\">功德+1</div>");
@@ -52,10 +51,13 @@ function animation_text() {
     }, 500);
 }
 
+//设置cookie以保存功德数
 if ($.cookie("Merit") == undefined) $.cookie("Merit", "0", { expires: 30 })
 var Merit = 0;
 Merit = $.cookie("Merit")
 Data_control("null")
+
+//增加功德
 function Data_control(Merit_data) {
     if(Merit_data == "click") {
         Merit++;
@@ -66,6 +68,8 @@ function Data_control(Merit_data) {
     }
 }
 
+
+//自动敲木鱼，暂时未实现
 var auto_run_data = false;
 var auto_run_speed = 150;
 function auto_run() {
@@ -77,6 +81,7 @@ function auto_run() {
     }, auto_run_speed);
 }
 
+//生成区间[minNum,maxNum]内的随机整数
 function randomNum(minNum,maxNum){ 
     switch(arguments.length){ 
         case 1: 
