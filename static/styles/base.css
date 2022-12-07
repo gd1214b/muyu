@@ -1,0 +1,47 @@
+.layer-preloading-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.layer-preloading-mask .loading-indicator {
+  width: 8px;
+  height: 50px;
+  float: left;
+  margin: 4px;
+  background-color: #78bd9a;
+  animation: layer-preloading-mask-loading 1s infinite ease-in-out;
+  border-radius: 4px;
+}
+.layer-preloading-mask .loading-indicator2 {
+  animation-delay: -0.9s; /*定义开始执行的地方，负号表示直接从第900ms开始执行*/
+}
+.layer-preloading-mask .loading-indicator3 {
+  animation-delay: -0.8s;
+}
+.layer-preloading-mask .loading-indicator4 {
+  animation-delay: -0.7s;
+}
+.layer-preloading-mask .loading-indicator5 {
+  animation-delay: -0.6s;
+}
+
+@keyframes layer-preloading-mask-loading {
+  0%,
+  40%,
+  100% {
+    /*定义每帧的动作*/
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+  }
+  20% {
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+  }
+}
